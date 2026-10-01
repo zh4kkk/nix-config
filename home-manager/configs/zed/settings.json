@@ -1,0 +1,79 @@
+{
+  "theme": "Tokyo Night Storm",
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "ui_font_size": 16,
+  "buffer_font_size": 18,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "autosave": "on_focus_change",
+  "format_on_save": "on",
+  "soft_wrap": "editor_width",
+  "telemetry": {
+    "metrics": false,
+  },
+  "vim_mode": false,
+  "indent_guides": {
+    "enabled": true,
+  },
+  "tab_bar": {
+    "show": true,
+  },
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 15,
+    "copy_on_select": true,
+    "dock": "bottom",
+  },
+  "languages": {
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint-langserver"],
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+      },
+    },
+    "Vue.js": {
+      "language_servers": ["vue-language-server", "eslint", "..."],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+  },
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "staticcheck": true,
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "clangd": {
+      "binary": {
+        "arguments": ["--header-insertion=never"],
+      },
+    },
+  },
+  "inlay_hints": {
+    "enabled": false,
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "project_panel": {
+    "dock": "left",
+    "default_width": 240,
+  },
+}
