@@ -3,7 +3,14 @@
   home.homeDirectory = "/home/admin";
   xdg.userDirs.enable = true;
 
-  programs.git.enable = true;
+  programs.git = {
+      enable = true;
+      userName = "zh4kkk";
+      userEmail = "metisasz9@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
 
 
   # shell:
