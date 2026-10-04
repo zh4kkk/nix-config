@@ -1,9 +1,10 @@
+# Основные настройки
 font=JetBrainsMono Nerd Font 10
-background-color=#000000
-text-color=#ffffff
-border-color=#ffffff
+background-color=#000000ff
+text-color=#ffffffff
+border-color=#ffffffff
 border-size=2
-border-radius=12
+border-radius=0
 width=300
 height=100
 padding=15
@@ -11,8 +12,9 @@ margin=15
 default-timeout=5000
 icons=0
 
+# Важные уведомления (High Urgency)
 [urgency=high]
-border-color=#ffffff
-background-color=#ffffff
-text-color=#000000
+border-color=#ffffffff
+background-color=#ffffffff
+text-color=#000000ff
 default-timeout=0
