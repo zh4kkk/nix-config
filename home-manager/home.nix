@@ -73,7 +73,7 @@
 
     firefox
     zed-editor
-    jetbrains.rider
+    # jetbrains.rider
     bruno
     nekoray
 
