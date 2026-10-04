@@ -125,6 +125,7 @@
     bruno
     onlyoffice-desktopeditors
     obsidian
+    opencode
 
 
     dotnetCorePackages.sdk_10_0
