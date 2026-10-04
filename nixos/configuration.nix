@@ -1,73 +1,99 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
-  # Allow unfree packages:
-  nixpkgs.config.allowUnfree = true;
-
-  # flakes:
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  system.stateVersion = "26.05";
+{ pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   # boot:
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # uefi update in OS:
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.kernelModules = [ "amdgpu" ];
+  };
+
+  # hardware & power:
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
+  services.udisks2.enable = true;
 
-  # latest kernel & amd drivers:
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = ["amdgpu"];
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+
+  # network & locale:
+  networking = {
+    hostName = "thinkpad";
+    networkmanager.enable = true;
   };
-  hardware.cpu.amd.updateMicrocode = true;
-  # finger print:
-  services.fprintd.enable = true;
-
-  # network:
-  networking.hostName = "thinkpad";
-  networking.networkmanager.enable = true;
   time.timeZone = "Europe/Moscow";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  # locale
-  i18n.defaultLocale = "ru_RU.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_NAME = "ru_RU.UTF-8";
-    LC_NUMERIC = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
-    LC_TIME = "ru_RU.UTF-8";
-  };
-
-  # pipewire:
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # user:
   users.users."admin" = {
     isNormalUser = true;
     description = "admin";
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "docker" ];
+    shell = pkgs.zsh;
   };
-  # no paswd for sudo:
   security.sudo.wheelNeedsPassword = false;
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (subject.isInGroup("wheel")) {
+          return polkit.Result.YES;
+        }
+      });
+    '';
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "admin";
+      };
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
+
+
+  # sway:
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = [];
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
+
+  # sound:
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    pulse.enable = true;
+  };
+
 
   # fonts:
   fonts.packages = with pkgs; [
@@ -75,36 +101,31 @@
     noto-fonts-color-emoji
   ];
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
 
-  # Автологин в GNOME для пользователя admin (вход без пароля)
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "admin";
+  # services:
+  virtualisation.docker.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  programs.zsh.enable = true;
 
-  # languages keymap:
-  services.xserver.xkb = {
-    layout = "us,ru";
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Системные пакеты
   environment.systemPackages = with pkgs; [
-    zed-editor
     git
     curl
-    obsidian
-
-    # Инструменты для Zed (LSP-сервер и форматер)
-    nixd
-    alejandra
+    brightnessctl
   ];
 
-  # rebuild alias:
-  programs.bash.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake $HOME/nix-config#";
+  # nix settings:
+  nixpkgs.config.allowUnfree = true;
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
+
+  system.stateVersion = "26.05";
 }
