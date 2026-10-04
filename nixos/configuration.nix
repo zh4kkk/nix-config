@@ -106,6 +106,7 @@
   virtualisation.docker.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
