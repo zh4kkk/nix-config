@@ -56,7 +56,8 @@
     slurp
     wl-clipboard
     xdg-utils
-    htop
+    btop
+    fastfetch
     bluetuith
 
 
