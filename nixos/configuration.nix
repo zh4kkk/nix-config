@@ -30,6 +30,11 @@
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.clash-verge = {
+      enable = true;
+      tunMode = true;
+    };
+
 
   # user:
   users.users."admin" = {

@@ -75,7 +75,7 @@
     zed-editor
     # jetbrains.rider
     bruno
-    nekoray
+    clash-verge-rev
     onlyoffice-desktopeditors
 
 
@@ -90,4 +90,14 @@
 
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
+
+
+    home.pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
 }
