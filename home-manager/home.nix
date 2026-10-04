@@ -1,7 +1,21 @@
 { pkgs, ... }: {
   home.username = "admin";
   home.homeDirectory = "/home/admin";
-  xdg.userDirs.enable = true;
+
+  xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+
+      download = "$HOME/Downloads";
+      documents = "$HOME/Documents";
+      pictures = "$HOME/Pictures";
+
+      desktop = "$HOME";
+      templates = null;
+      publicShare = null;
+      music = null;
+      videos = null;
+    };
 
   programs.git = {
       enable = true;
