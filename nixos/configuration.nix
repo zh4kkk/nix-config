@@ -26,6 +26,7 @@
     hostName = "thinkpad";
     networkmanager.enable = true;
   };
+  systemd.services.NetworkManager-wait-online.enable = false;
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
 

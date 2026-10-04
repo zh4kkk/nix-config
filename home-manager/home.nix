@@ -76,6 +76,7 @@
     # jetbrains.rider
     bruno
     nekoray
+    onlyoffice-desktopeditors
 
 
     dotnetCorePackages.sdk_8_0
