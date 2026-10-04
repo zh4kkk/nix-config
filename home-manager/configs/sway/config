@@ -55,9 +55,9 @@ input "type:touchpad" {
     pointer_accel 0.5
 }
 
-input "*TrackPoint*" {
+input "type:pointer" {
     accel_profile "flat"
-    pointer_accel -0.8
+    pointer_accel -0.3
 }
 
 # =========================================================================

@@ -83,6 +83,7 @@
     btop
     fastfetch
     bluetuith
+    pavucontrol
 
 
     yazi
@@ -98,19 +99,21 @@
 
     firefox
     zed-editor
-    # jetbrains.rider
+    jetbrains.rider
     bruno
     clash-verge-rev
     onlyoffice-desktopeditors
+    obsidian
 
 
-    dotnetCorePackages.sdk_8_0
+    dotnetCorePackages.sdk_10_0
     nodejs
     pnpm
     gcc
     gnumake
     cmake
     ninja
+    lazygit
   ];
 
   home.stateVersion = "26.05";
