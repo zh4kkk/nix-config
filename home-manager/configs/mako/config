@@ -1,7 +1,7 @@
 font=JetBrainsMono Nerd Font 10
-background-color=#1e1e2ecc
-text-color=#cdd6f4
-border-color=#45475aaa
+background-color=#000000
+text-color=#ffffff
+border-color=#ffffff
 border-size=2
 border-radius=12
 width=300
@@ -12,5 +12,7 @@ default-timeout=5000
 icons=0
 
 [urgency=high]
-border-color=#f38ba8
+border-color=#ffffff
+background-color=#ffffff
+text-color=#000000
 default-timeout=0
