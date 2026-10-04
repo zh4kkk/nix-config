@@ -1,61 +1,57 @@
 { pkgs, ... }: {
   home.username = "admin";
   home.homeDirectory = "/home/admin";
-
   xdg.userDirs = {
-      enable = true;
-      createDirectories = true;
+    enable = true;
+    createDirectories = true;
+    download = "$HOME/Downloads";
+    documents = "$HOME/Documents";
+    pictures = "$HOME/Pictures";
+    desktop = "$HOME";
+    templates = null;
+    publicShare = null;
+    music = null;
+    videos = null;
+  };
 
-      download = "$HOME/Downloads";
-      documents = "$HOME/Documents";
-      pictures = "$HOME/Pictures";
-
-      desktop = "$HOME";
-      templates = null;
-      publicShare = null;
-      music = null;
-      videos = null;
-    };
 
   programs.git = {
-      enable = true;
-      userName = "zh4kkk";
-      userEmail = "metisasz9@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
+    enable = true;
+    settings = {
+      user = {
+        name = "zh4kkk";
+        email = "metisasz9@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+  };
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "github.com" = {
+        hostname = "ssh.github.com";
+        port = 443;
+        user = "git";
       };
     };
-      programs.ssh = {
-        enable = true;
-        matchBlocks = {
-          "github.com" = {
-            hostname = "ssh.github.com";
-            port = 443;
-            user = "git";
-          };
-        };
-      };
+  };
 
 
-  # shell:
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = builtins.readFile ./configs/zsh/.zshrc;
   };
   programs.starship.enable = true;
-
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
-
   services.udiskie.enable = true;
   services.cliphist.enable = true;
 
 
-  # config:
   xdg.configFile = {
     "sway".source = ./configs/sway;
     "waybar".source = ./configs/waybar;
@@ -68,7 +64,33 @@
   };
 
 
+  home.pointerCursor = {
+    enable = true;
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 20;
+  };
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
+
+  home.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
   home.packages = with pkgs; [
+
     waybar
     kitty
     fuzzel
@@ -101,7 +123,6 @@
     zed-editor
     jetbrains.rider
     bruno
-    clash-verge-rev
     onlyoffice-desktopeditors
     obsidian
 
@@ -118,14 +139,4 @@
 
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
-
-
-    home.pointerCursor = {
-      enable = true;
-      gtk.enable = true;
-      x11.enable = true;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 22;
-    };
 }

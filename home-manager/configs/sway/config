@@ -18,11 +18,7 @@ exec_always "pkill waybar; waybar"
 # 2. ЭКРАНЫ И ОБОИ
 # =========================================================================
 output eDP-1 scale 1.25
-
-# Обои (если файла нет, будет аккуратный тёмный фон вместо вылета)
-output * bg #1a1a1a solid_color
-# Если картинка есть в ~/Pictures, раскомментируй строку ниже:
-# output * bg $HOME/Pictures/11356502.png fill
+output * bg #000000 solid_color
 
 # Реакция на закрытие крышки ноутбука ThinkPad
 bindswitch --locked lid:on output * power off

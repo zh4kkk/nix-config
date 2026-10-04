@@ -35,6 +35,7 @@
       tunMode = true;
       serviceMode = true;
     };
+    networking.firewall.trustedInterfaces = [ "Mihomo" ];
 
 
   # user:
