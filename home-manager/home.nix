@@ -11,7 +11,7 @@
     enable = true;
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
-    initExtra = builtins.readFile ./configs/zsh/.zshrc;
+    initContent = builtins.readFile ./configs/zsh/.zshrc;
   };
   programs.starship.enable = true;
 
@@ -34,13 +34,6 @@
     "kanshi".source = ./configs/kanshi;
     "yazi".source = ./configs/yazi;
     "zed".source = ./configs/zed;
-  };
-
-  # scripts:
-  home.file.".local/bin" = {
-    source = ./configs/scripts;
-    recursive = true;
-    executable = true;
   };
 
 
