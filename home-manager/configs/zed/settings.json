@@ -2,7 +2,7 @@
   "theme": "Tokyo Night Storm",
   "icon_theme": "Colored Zed Icons Theme Dark",
 
-  "ui_font_size": 13,
+  "ui_font_size": 14,
   "buffer_font_size": 14,
   "buffer_font_family": "JetBrainsMono Nerd Font",
 
@@ -34,7 +34,7 @@
 
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font",
-    "font_size": 13,
+    "font_size": 14,
     "copy_on_select": true,
     "dock": "bottom",
   },
