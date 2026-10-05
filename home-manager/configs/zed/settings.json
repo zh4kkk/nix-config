@@ -6,16 +6,18 @@
   "buffer_font_size": 15,
   "buffer_font_family": "JetBrainsMono Nerd Font",
 
+  "show_completions_on_input": true,
+  "show_completion_documentation": true,
+
   "autosave": "on_focus_change",
   "format_on_save": "on",
-  "sticky_scroll": {
-    "enabled": true,
-  },
   "soft_wrap": "editor_width",
   "scrollbar": {
     "show": "never",
   },
-
+  "inlay_hints": {
+    "enabled": false,
+  },
   "telemetry": {
     "metrics": false,
   },
@@ -31,7 +33,6 @@
     "dock": "left",
     "default_width": 220,
   },
-
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font",
     "font_size": 14,
@@ -40,14 +41,29 @@
   },
 
   "languages": {
+    "Vue.js": {
+      "language_servers": ["vue-language-server", "vtsls", "eslint"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TypeScript": {
+      "language_servers": ["vtsls", "eslint"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "JavaScript": {
+      "language_servers": ["vtsls", "eslint"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
     "Go": {
       "language_servers": ["gopls", "golangci-lint-langserver"],
       "code_actions_on_format": {
         "source.organizeImports": true,
       },
-    },
-    "Vue.js": {
-      "language_servers": ["vue-language-server", "eslint"],
     },
     "Nix": {
       "language_servers": ["nixd"],
@@ -55,9 +71,39 @@
   },
 
   "lsp": {
+    "vtsls": {
+      "initialization_options": {
+        "typescript": {
+          "suggest": {
+            "completeFunctionCalls": true,
+            "includeAutomaticOptionalChainCompletions": true,
+            "autoImports": true,
+          },
+          "preferences": {
+            "includePackageJsonAutoImports": "auto",
+            "importModuleSpecifier": "shortest",
+          },
+        },
+        "javascript": {
+          "suggest": {
+            "completeFunctionCalls": true,
+            "autoImports": true,
+          },
+        },
+      },
+    },
+    "vue-language-server": {
+      "initialization_options": {
+        "vue": {
+          "hybridMode": true,
+        },
+      },
+    },
     "gopls": {
       "initialization_options": {
         "staticcheck": true,
+        "completeUnimported": true,
+        "usePlaceholders": true,
         "hints": {
           "assignVariableTypes": true,
           "compositeLiteralFields": true,

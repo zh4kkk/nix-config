@@ -29,13 +29,16 @@
   systemd.services.NetworkManager-wait-online.enable = false;
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
-
+  networking.firewall = {
+      enable = true;
+      checkReversePath = "loose";
+      trustedInterfaces = [ "Mihomo"];
+    };
   programs.clash-verge = {
       enable = true;
       tunMode = true;
       serviceMode = true;
     };
-    networking.firewall.trustedInterfaces = [ "Mihomo" ];
 
 
   # user:
