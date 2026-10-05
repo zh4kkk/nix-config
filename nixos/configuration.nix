@@ -33,7 +33,12 @@
       enable = true;
       checkReversePath = "loose";
     };
-services.v2raya.enable = true;
+    services.v2raya = {
+        enable = true;
+        package = pkgs.v2raya.override {
+          v2ray = pkgs.xray;
+        };
+      };
 
 
   # user:
