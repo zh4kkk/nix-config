@@ -106,7 +106,6 @@
     fastfetch
     bluetuith
     pavucontrol
-    throne
 
 
     yazi
