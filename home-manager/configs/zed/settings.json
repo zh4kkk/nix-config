@@ -6,13 +6,12 @@
   "buffer_font_size": 15,
   "buffer_font_family": "JetBrainsMono Nerd Font",
 
-  // Сохранение и автоформатирование
   "autosave": "on_focus_change",
   "format_on_save": "on",
-  "soft_wrap": "editor_width",
-  "inlay_hints": {
-    "enabled": false,
+  "sticky_scroll": {
+    "enabled": true,
   },
+  "soft_wrap": "editor_width",
   "scrollbar": {
     "show": "never",
   },
@@ -40,45 +39,39 @@
     "dock": "bottom",
   },
 
-  // =========================================================================
-  // НАСТРОЙКИ ЯЗЫКОВ ЧЕРЕЗ ESLINT (БЕЗ PRETTIER)
-  // =========================================================================
   "languages": {
-    "Vue": {
-      "language_servers": [
-        "vue-language-server",
-        "vtsls",
-        "eslint",
-        "emmet-language-server",
-      ],
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint-langserver"],
       "code_actions_on_format": {
-        "source.fixAll.eslint": "on",
+        "source.organizeImports": true,
       },
     },
-    "TypeScript": {
-      "language_servers": ["vtsls", "eslint", "emmet-language-server"],
-      "code_actions_on_format": {
-        "source.fixAll.eslint": "on",
-      },
-    },
-    "JavaScript": {
-      "language_servers": ["vtsls", "eslint", "emmet-language-server"],
-      "code_actions_on_format": {
-        "source.fixAll.eslint": "on",
-      },
+    "Vue.js": {
+      "language_servers": ["vue-language-server", "eslint"],
     },
     "Nix": {
       "language_servers": ["nixd"],
     },
   },
 
-  // Включаем гибридный режим для связки Vue + TypeScript
   "lsp": {
-    "vue-language-server": {
+    "gopls": {
       "initialization_options": {
-        "vue": {
-          "hybridMode": true,
+        "staticcheck": true,
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
         },
+      },
+    },
+    "clangd": {
+      "binary": {
+        "arguments": ["--header-insertion=never"],
       },
     },
   },
