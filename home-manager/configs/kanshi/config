@@ -6,8 +6,3 @@ profile docked {
     output HDMI-A-1 enable mode 1920x1080@144.002Hz scale 1.0 position 0,0
     output eDP-1 enable mode 1920x1200@60Hz scale 1.25 position 1920,0
 }
-
-profile clamshell {
-    output HDMI-A-1 enable mode 1920x1080@144.002Hz scale 1.0 position 0,0
-    output eDP-1 disable
-}

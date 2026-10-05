@@ -20,6 +20,8 @@ exec kanshi
 # =========================================================================
 output eDP-1 scale 1.25
 output * bg #000000 solid_color
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 
 # =========================================================================
