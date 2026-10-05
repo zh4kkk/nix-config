@@ -70,6 +70,11 @@
       };
     };
   };
+  services.logind.settings = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "suspend";
+      HandleLidSwitchDocked = "ignore";
+    };
 
 
   # sway:

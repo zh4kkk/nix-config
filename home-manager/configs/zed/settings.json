@@ -3,9 +3,10 @@
   "icon_theme": "Colored Zed Icons Theme Dark",
 
   "ui_font_size": 14,
-  "buffer_font_size": 14,
+  "buffer_font_size": 15,
   "buffer_font_family": "JetBrainsMono Nerd Font",
 
+  // Сохранение и автоформатирование
   "autosave": "on_focus_change",
   "format_on_save": "on",
   "soft_wrap": "editor_width",
@@ -37,5 +38,48 @@
     "font_size": 14,
     "copy_on_select": true,
     "dock": "bottom",
+  },
+
+  // =========================================================================
+  // НАСТРОЙКИ ЯЗЫКОВ ЧЕРЕЗ ESLINT (БЕЗ PRETTIER)
+  // =========================================================================
+  "languages": {
+    "Vue": {
+      "language_servers": [
+        "vue-language-server",
+        "vtsls",
+        "eslint",
+        "emmet-language-server",
+      ],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": "on",
+      },
+    },
+    "TypeScript": {
+      "language_servers": ["vtsls", "eslint", "emmet-language-server"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": "on",
+      },
+    },
+    "JavaScript": {
+      "language_servers": ["vtsls", "eslint", "emmet-language-server"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": "on",
+      },
+    },
+    "Nix": {
+      "language_servers": ["nixd"],
+    },
+  },
+
+  // Включаем гибридный режим для связки Vue + TypeScript
+  "lsp": {
+    "vue-language-server": {
+      "initialization_options": {
+        "vue": {
+          "hybridMode": true,
+        },
+      },
+    },
   },
 }

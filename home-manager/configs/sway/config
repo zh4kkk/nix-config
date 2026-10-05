@@ -11,6 +11,7 @@ exec /etc/profiles/per-user/admin/libexec/polkit-gnome-authentication-agent-1
 # Уведомления и панель
 exec mako
 exec_always "pkill waybar; waybar"
+exec kanshi
 
 # (udiskie и cliphist УЖЕ запущены демонами через Home Manager в фоне)
 
@@ -20,9 +21,6 @@ exec_always "pkill waybar; waybar"
 output eDP-1 scale 1.25
 output * bg #000000 solid_color
 
-# Реакция на закрытие крышки ноутбука ThinkPad
-bindswitch --locked lid:on output * power off
-bindswitch --locked lid:off output * power on
 
 # =========================================================================
 # 3. ОСНОВНЫЕ ПЕРЕМЕННЫЕ И МОДИФИКАТОР
