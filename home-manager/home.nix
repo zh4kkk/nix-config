@@ -129,7 +129,6 @@
 
     dotnetCorePackages.sdk_10_0
     nodejs
-    pnpm
     gcc
     gnumake
     cmake

@@ -32,13 +32,8 @@
   networking.firewall = {
       enable = true;
       checkReversePath = "loose";
-      trustedInterfaces = [ "Mihomo"];
     };
-  programs.clash-verge = {
-      enable = true;
-      tunMode = true;
-      serviceMode = true;
-    };
+services.v2raya.enable = true;
 
 
   # user:
