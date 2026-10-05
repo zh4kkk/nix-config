@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   home.username = "admin";
   home.homeDirectory = "/home/admin";
+
+  # Directory config:
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -14,7 +16,7 @@
     videos = null;
   };
 
-
+# Git:
   programs.git = {
     enable = true;
     settings = {
@@ -36,7 +38,7 @@
     };
   };
 
-
+# Zsh:
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -51,7 +53,7 @@
   services.udiskie.enable = true;
   services.cliphist.enable = true;
 
-
+# Configs:
   xdg.configFile = {
     "sway".source = ./configs/sway;
     "waybar".source = ./configs/waybar;
@@ -63,7 +65,7 @@
     "zed".source = ./configs/zed;
   };
 
-
+# Customization:
   home.pointerCursor = {
     enable = true;
     gtk.enable = true;
@@ -85,10 +87,13 @@
   };
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-
+# Electron:
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
+
+
+  # Software:
   home.packages = with pkgs; [
 
     waybar

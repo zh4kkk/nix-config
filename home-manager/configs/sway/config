@@ -1,32 +1,19 @@
-# =========================================================================
-# 1. АВТОЗАПУСК И СИСТЕМНОЕ ОКРУЖЕНИЕ
-# =========================================================================
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
-# Агент авторизации Polkit (правильный путь в NixOS)
 exec /etc/profiles/per-user/admin/libexec/polkit-gnome-authentication-agent-1
 
-# Уведомления и панель
 exec mako
 exec_always "pkill waybar; waybar"
 exec kanshi
 
-# (udiskie и cliphist УЖЕ запущены демонами через Home Manager в фоне)
-
-# =========================================================================
-# 2. ЭКРАНЫ И ОБОИ
-# =========================================================================
 output eDP-1 scale 1.25
 output * bg #000000 solid_color
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
 
-# =========================================================================
-# 3. ОСНОВНЫЕ ПЕРЕМЕННЫЕ И МОДИФИКАТОР
-# =========================================================================
 set $mod Mod4
 set $term kitty
 set $menu fuzzel
@@ -34,9 +21,7 @@ set $file_manager kitty -e yazi
 
 floating_modifier $mod
 
-# =========================================================================
-# 4. ВВОД (КЛАВИАТУРА И ТАЧПАД THINKPAD)
-# =========================================================================
+
 input "type:keyboard" {
     xkb_layout "us,ru"
     xkb_options "grp:win_space_toggle"
@@ -56,9 +41,7 @@ input "type:pointer" {
     pointer_accel -0.3
 }
 
-# =========================================================================
-# 5. ОФОРМЛЕНИЕ И ГЭПЫ
-# =========================================================================
+
 default_border pixel 2
 default_floating_border pixel 2
 smart_gaps off
@@ -71,36 +54,32 @@ client.focused_inactive #000000 #000000 #ffffff #000000 #000000
 client.unfocused        #000000 #000000 #888888 #000000 #000000
 client.urgent           #ff0000 #ff0000 #ffffff #ff0000 #ff0000
 
-# =========================================================================
-# 6. БИНДЫ: ЗАПУСК ПРОГРАММ И УПРАВЛЕНИЕ ОКНАМИ
-# =========================================================================
+
 bindsym --to-code $mod+Return exec $term
 bindsym --to-code $mod+q kill
 bindsym --to-code $mod+d exec $menu
 bindsym --to-code $mod+i exec $file_manager
 
-# Фокус (Vim-навигация)
+
 bindsym --to-code $mod+h focus left
 bindsym --to-code $mod+j focus down
 bindsym --to-code $mod+k focus up
 bindsym --to-code $mod+l focus right
 
-# Перемещение окон
+
 bindsym --to-code $mod+Shift+h move left
 bindsym --to-code $mod+Shift+j move down
 bindsym --to-code $mod+Shift+k move up
 bindsym --to-code $mod+Shift+l move right
 
-# Сплиты
+
 bindsym --to-code $mod+v splith
 bindsym --to-code $mod+g splitv
 
 # Плавающий режим
 bindsym --to-code $mod+Shift+space floating toggle
 
-# =========================================================================
-# 7. ВОРКСПЕЙСЫ (1-10)
-# =========================================================================
+
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -123,30 +102,21 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# =========================================================================
-# 8. МЕДИА-КЛАВИШИ И ЯРКОСТЬ THINKPAD
-# =========================================================================
+
 bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
-# =========================================================================
-# 9. СКРИНШОТЫ (GRIM + SLURP) И БУФЕР ОБМЕНА
-# =========================================================================
-# Скриншот всего экрана -> в буфер обмена и в файл
+
 bindsym Print exec grim - | wl-copy && notify-send "Screenshot" "Full screen copied to clipboard"
 
-# Скриншот области -> в буфер обмена
 bindsym $mod+Print exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Area copied to clipboard"
 
-# Менеджер буфера обмена через Fuzzel
 bindsym --to-code $mod+b exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
 
-# =========================================================================
-# 10. ПРАВИЛА ДЛЯ ОКОН (ПЛАВАЮЩИЕ ДИАЛОГИ)
-# =========================================================================
+
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable

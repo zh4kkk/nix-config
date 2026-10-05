@@ -14,7 +14,7 @@
   # hardware & power:
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
   };
   services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
