@@ -71,9 +71,11 @@
     };
   };
   services.logind.settings = {
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "ignore";
-      HandleLidSwitchDocked = "ignore";
+      Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "ignore";
+        HandleLidSwitchDocked = "ignore";
+      };
     };
 
 
