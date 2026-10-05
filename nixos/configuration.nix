@@ -35,6 +35,8 @@
     };
     programs.throne.enable = true;
     programs.throne.tunMode.enable = true;
+    programs.clash-verge.enable = true;
+    programs.clash-verge.tunMode = true;
 
 
   # user:
