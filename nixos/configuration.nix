@@ -142,6 +142,10 @@
       options = "--delete-older-than 7d";
     };
   };
+  swapDevices = [ {
+      device = "/swapfile";
+      size = 8 * 1024;
+    } ];
 
   system.stateVersion = "26.05";
     documentation.nixos.enable = false;
