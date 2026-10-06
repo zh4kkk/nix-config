@@ -9,6 +9,7 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = [ "amdgpu" ];
+    kernelParams = [ "hid_apple.fnmode=2" ];
   };
 
   # hardware & power:
@@ -30,13 +31,15 @@
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
   networking.firewall = {
+    enable = true;
+    checkReversePath = "loose";
+    trustedInterfaces = [ "Mihomo" "Meta" "tun0" ];
+  };
+  programs.clash-verge = {
       enable = true;
-      checkReversePath = "loose";
+      tunMode = true;
+      serviceMode = true;
     };
-    programs.throne.enable = true;
-    programs.throne.tunMode.enable = true;
-    programs.clash-verge.enable = true;
-    programs.clash-verge.tunMode = true;
 
 
   # user:

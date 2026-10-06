@@ -106,11 +106,14 @@
     grim
     slurp
     wl-clipboard
+    cliphist
+    wl-clip-persist
     xdg-utils
     btop
     fastfetch
     bluetuith
     ncpamixer
+    alsa-utils
 
 
     yazi
@@ -135,11 +138,17 @@
     dotnetCorePackages.sdk_10_0
     nodejs
     gcc
+    clang-tools
     gnumake
     cmake
     ninja
     lazydocker
     nixd
+    gopls
+    golangci-lint-langserver
+    vtsls
+    vue-language-server
+    omnisharp-roslyn
     alejandra
   ];
 
