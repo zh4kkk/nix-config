@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home.username = "admin";
   home.homeDirectory = "/home/admin";
 
@@ -110,7 +110,7 @@
     btop
     fastfetch
     bluetuith
-    pavucontrol
+    ncpamixer
 
 
     yazi
@@ -124,7 +124,7 @@
     p7zip
 
 
-    firefox
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     zed-editor
     jetbrains.rider
     bruno
@@ -138,8 +138,7 @@
     gnumake
     cmake
     ninja
-    lazygit
-    opencode
+    lazydocker
     nixd
     alejandra
   ];
