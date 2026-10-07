@@ -144,11 +144,6 @@
     ninja
     lazydocker
     nixd
-    gopls
-    golangci-lint-langserver
-    vtsls
-    vue-language-server
-    omnisharp-roslyn
     alejandra
   ];
 
