@@ -125,7 +125,6 @@
     jetbrains.rider
     bruno
     onlyoffice-desktopeditors
-    obsidian
 
 
     dotnetCorePackages.sdk_10_0
@@ -138,6 +137,8 @@
     lazydocker
     nixd
     alejandra
+    go
+    wireshark
   ];
 
   home.stateVersion = "26.05";
