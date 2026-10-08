@@ -5,7 +5,8 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 exec /etc/profiles/per-user/admin/libexec/polkit-gnome-authentication-agent-1
 
 exec mako
-exec_always "pkill waybar; waybar"
+exec_always waybar
+bindsym $mod+w exec pkill -SIGUSR1 waybar
 exec kanshi
 exec wl-clip-persist --clipboard regular
 exec rm -f ~/.cache/cliphist/db
@@ -150,14 +151,3 @@ for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
 
 for_window [floating] move position center
-
-
-
-
-bar {
-    swaybar_command waybar
-    position bottom
-    mode hide
-    hidden_state hide
-    modifier Mod4
-}
