@@ -1,28 +1,27 @@
 * {
     border: none;
-    border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-    min-height: 0;
 }
 
 window#waybar {
     background: transparent;
+    min-height: 20px;
 }
 
 .modules-right {
     background-color: #000000;
     border: 1px solid #ffffff;
     border-radius: 4px;
-    padding: 3px 10px;
-    margin: 0 10px 10px 0;
+    padding: 2px 8px;
+    margin: 0 10px 4px 0;
 
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
 
-.modules-right:hover {
+window#waybar:hover .modules-right {
     opacity: 1;
 }
 
@@ -33,29 +32,17 @@ window#waybar {
 #language,
 #battery,
 #workspaces {
-    padding: 0 6px;
+    padding: 0 5px;
     color: #ffffff;
 }
 
 #workspaces button {
-    padding: 0 4px;
-    color: #777777;
+    padding: 0 3px;
+    color: #666666;
 }
 
 #workspaces button.focused {
     color: #000000;
     background-color: #ffffff;
     border-radius: 2px;
-}
-
-#workspaces button.urgent {
-    color: #ff5555;
-}
-
-#battery.warning {
-    color: #ffaa00;
-}
-
-#battery.critical {
-    color: #ff5555;
 }

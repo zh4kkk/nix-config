@@ -150,3 +150,14 @@ for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
 
 for_window [floating] move position center
+
+
+
+
+bar {
+    swaybar_command waybar
+    position bottom
+    mode hide
+    hidden_state hide
+    modifier Mod4
+}
