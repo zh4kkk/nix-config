@@ -6,7 +6,6 @@ exec /etc/profiles/per-user/admin/libexec/polkit-gnome-authentication-agent-1
 
 exec mako
 exec_always waybar
-bindsym $mod+w exec pkill -SIGUSR1 waybar
 exec kanshi
 exec wl-clip-persist --clipboard regular
 exec rm -f ~/.cache/cliphist/db
@@ -66,6 +65,7 @@ client.urgent           #ff0000 #ff0000 #ffffff #ff0000 #ff0000
 
 
 bindsym --to-code $mod+Return exec $term
+bindsym $mod+w exec pkill -SIGUSR1 waybar
 bindsym --to-code $mod+q kill
 bindsym --to-code $mod+d exec $menu
 bindsym --to-code $mod+i exec $file_manager
