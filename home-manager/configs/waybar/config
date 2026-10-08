@@ -1,22 +1,46 @@
 {
   "layer": "top",
   "position": "bottom",
+  "exclusive": false,
+  "passthrough": false,
   "start_hidden": true,
 
   "modules-left": [],
   "modules-center": [],
   "modules-right": [
-    "clock",
-    "memory",
-    "pulseaudio",
-    "backlight",
-    "sway/language",
-    "battery",
-    "sway/workspaces"
+    "group/main",
+    "group/connectivity"
   ],
+
+  "group/main": {
+    "orientation": "inherit",
+    "modules": [
+      "sway/language",
+      "clock",
+      "memory",
+      "pulseaudio",
+      "backlight",
+      "battery",
+      "sway/workspaces"
+    ]
+  },
+
+  "group/connectivity": {
+    "orientation": "inherit",
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
+  },
+
+  "sway/language": {
+    "format": "{short}",
+    "tooltip": false
+  },
 
   "clock": {
     "format": "{:%H:%M}",
+    "format-alt": "{:%d.%m.%Y}",
     "tooltip-format": "{calendar}"
   },
 
@@ -39,23 +63,35 @@
     "scroll-step": 5
   },
 
-  "sway/language": {
-    "format": "{short}",
-    "tooltip": false
-  },
-
   "battery": {
     "states": {
-      "warning": 30,
-      "critical": 15
+      "critical": 20
     },
     "format": "BAT {capacity}%",
-    "format-charging": "CHG {capacity}%"
+    "format-charging": "CHG {capacity}%",
+    "on-click": "kitty -e btop"
   },
 
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{name}"
+  },
+
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format": "{essid}",
+    "on-click": "kitty -e nmtui"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}",
+    "on-click": "kitty -e bluetuith"
   }
 }
