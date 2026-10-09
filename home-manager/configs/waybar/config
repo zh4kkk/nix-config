@@ -3,7 +3,7 @@
   "position": "bottom",
   "exclusive": false,
   "passthrough": false,
-  "start_hidden": true,
+  "start_hidden": false,
 
   "modules-left": [],
   "modules-center": [],
