@@ -35,11 +35,6 @@
     checkReversePath = "loose";
     trustedInterfaces = [ "Mihomo" "Meta" "tun0" ];
   };
-  programs.clash-verge = {
-      enable = true;
-      tunMode = true;
-      serviceMode = true;
-    };
     services.v2raya = {
       enable = true;
       cliPackage = pkgs.xray;
