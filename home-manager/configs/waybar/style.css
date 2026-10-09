@@ -9,14 +9,25 @@ window#waybar {
     background-color: transparent;
 }
 
-.modules-right {
+#connectivity,
+#info {
     background-color: #000000;
     border: 1px solid #ffffff;
     border-radius: 4px;
     padding: 3px 8px;
-    margin: 0 10px 6px 0;
+    margin: 0 0 6px 0;
 }
 
+#connectivity {
+    margin-right: 8px;
+}
+
+#info {
+    margin-right: 10px;
+}
+
+#network,
+#bluetooth,
 #clock,
 #memory,
 #pulseaudio,
@@ -26,6 +37,12 @@ window#waybar {
 #workspaces {
     padding: 0 5px;
     color: #ffffff;
+}
+
+#bluetooth.off,
+#bluetooth.disabled,
+#network.disconnected {
+    color: #777777;
 }
 
 #workspaces button {

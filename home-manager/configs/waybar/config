@@ -1,46 +1,60 @@
 {
   "layer": "top",
   "position": "bottom",
-  "exclusive": false,
-  "passthrough": false,
-  "start_hidden": false,
 
   "modules-left": [],
   "modules-center": [],
   "modules-right": [
-    "group/main",
-    "group/connectivity"
+    "group/connectivity",
+    "group/info"
   ],
 
-  "group/main": {
-    "orientation": "inherit",
-    "modules": [
-      "sway/language",
-      "clock",
-      "memory",
-      "pulseaudio",
-      "backlight",
-      "battery",
-      "sway/workspaces"
-    ]
-  },
-
   "group/connectivity": {
-    "orientation": "inherit",
+    "orientation": "horizontal",
     "modules": [
       "network",
       "bluetooth"
     ]
   },
 
-  "sway/language": {
-    "format": "{short}",
-    "tooltip": false
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} 󰈀",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "kitty -e nmtui"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "󰂯",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "kitty -e bluetuith"
+  },
+
+  "group/info": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock",
+      "memory",
+      "pulseaudio",
+      "backlight",
+      "sway/language",
+      "battery",
+      "sway/workspaces"
+    ]
   },
 
   "clock": {
     "format": "{:%H:%M}",
-    "format-alt": "{:%d.%m.%Y}",
     "tooltip-format": "{calendar}"
   },
 
@@ -63,35 +77,23 @@
     "scroll-step": 5
   },
 
+  "sway/language": {
+    "format": "{short}",
+    "tooltip": false
+  },
+
   "battery": {
     "states": {
-      "critical": 20
+      "warning": 30,
+      "critical": 15
     },
     "format": "BAT {capacity}%",
-    "format-charging": "CHG {capacity}%",
-    "on-click": "kitty -e btop"
+    "format-charging": "CHG {capacity}%"
   },
 
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{name}"
-  },
-
-  "network": {
-    "format-wifi": "󰤨",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤮",
-    "tooltip-format": "{essid}",
-    "on-click": "kitty -e nmtui"
-  },
-
-  "bluetooth": {
-    "format": "󰂯",
-    "format-disabled": "󰂲",
-    "format-off": "󰂲",
-    "format-connected": "󰂱",
-    "tooltip-format": "{controller_alias}",
-    "on-click": "kitty -e bluetuith"
   }
 }
