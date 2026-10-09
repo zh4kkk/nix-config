@@ -9,25 +9,29 @@ window#waybar {
     background-color: transparent;
 }
 
-#connectivity,
 #info {
     background-color: #000000;
     border: 1px solid #ffffff;
     border-radius: 4px;
     padding: 3px 8px;
-    margin: 0 0 6px 0;
+    margin: 0 10px 6px 0;
 }
 
 #connectivity {
-    margin-right: 8px;
-}
-
-#info {
-    margin-right: 10px;
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin: 0 8px 6px 0;
 }
 
 #network,
-#bluetooth,
+#bluetooth {
+    font-size: 15px;
+    padding: 0 4px;
+    color: #ffffff;
+}
+
 #clock,
 #memory,
 #pulseaudio,
