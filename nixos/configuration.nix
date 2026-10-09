@@ -33,7 +33,7 @@
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
-    trustedInterfaces = [ "Mihomo" "Meta" "tun0" ];
+    trustedInterfaces = [ "tun0" ];
   };
     services.v2raya = {
       enable = true;
