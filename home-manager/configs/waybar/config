@@ -46,17 +46,22 @@
   "group/info": {
     "orientation": "horizontal",
     "modules": [
+      "sway/language",
       "clock",
       "memory",
       "pulseaudio",
       "backlight",
-      "sway/language",
       "battery",
       "sway/workspaces"
     ]
   },
+  "sway/language": {
+    "format": "{short}",
+    "tooltip": false
+  },
   "clock": {
     "format": "{:%H:%M}",
+    "format-alt": "{:%d.%m.%Y}",
     "tooltip-format": "{calendar}"
   },
   "memory": {
@@ -75,17 +80,14 @@
     "tooltip": false,
     "scroll-step": 5
   },
-  "sway/language": {
-    "format": "{short}",
-    "tooltip": false
-  },
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
     "format": "BAT {capacity}%",
-    "format-charging": "CHG {capacity}%"
+    "format-charging": "CHG {capacity}%",
+    "on-click": "kitty -e btop"
   },
   "sway/workspaces": {
     "disable-scroll": true,

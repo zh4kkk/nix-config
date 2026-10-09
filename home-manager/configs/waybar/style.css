@@ -32,6 +32,10 @@ window#waybar {
     color: #ffffff;
 }
 
+#network {
+    margin-right: 5px;
+}
+
 #clock,
 #memory,
 #pulseaudio,
