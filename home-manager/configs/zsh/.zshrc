@@ -16,7 +16,7 @@ _dotnet_zsh_complete() {
 compctl -K _dotnet_zsh_complete dotnet
 
 
-alias rebuild='sudo nixos-rebuild switch --flake ~/nix-config#thinkpad'
+alias rebuild='nixos-rebuild switch --use-remote-sudo --flake ~/nix-config#thinkpad'
 alias nixos-update='cd ~/nix-config && nix flake update && rebuild'
 alias nixos-clean='sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot'
 alias docker-on='sudo systemctl start docker'
