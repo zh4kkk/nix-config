@@ -140,6 +140,7 @@
     alejandra
     go
     wireshark
+    pnpm
   ];
 
   home.stateVersion = "26.05";
