@@ -123,9 +123,9 @@
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     zed-editor
     jetbrains.rider
+    neovim
     bruno
     onlyoffice-desktopeditors
-    obsidian
 
 
     dotnetCorePackages.sdk_10_0
