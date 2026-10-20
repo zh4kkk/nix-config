@@ -80,11 +80,6 @@
   };
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-# Electron:
-  home.sessionVariables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-  };
-
 
   # Software:
   home.packages = with pkgs; [
@@ -139,8 +134,8 @@
     nixd
     alejandra
     go
-    wireshark
     pnpm
+    claude-code
   ];
 
   home.stateVersion = "26.05";
