@@ -118,7 +118,7 @@
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     zed-editor
     jetbrains.rider
-    neovim
+    helix
     bruno
     onlyoffice-desktopeditors
 
