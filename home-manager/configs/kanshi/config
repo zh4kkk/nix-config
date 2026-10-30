@@ -1,5 +1,5 @@
 profile standalone {
-    output eDP-1 enable mode 1920x1200@60Hz scale 1.25 position 0,0
+    output eDP-1 enable mode 1920x1200@60Hz scale 1 position 0,0
 }
 
 profile docked {
