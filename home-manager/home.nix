@@ -121,6 +121,7 @@
     helix
     bruno
     onlyoffice-desktopeditors
+    steam
 
 
     dotnetCorePackages.sdk_10_0
