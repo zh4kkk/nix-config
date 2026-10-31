@@ -146,6 +146,7 @@
     alejandra
     go
     pnpm
+    opencode
   ];
 
   home.stateVersion = "26.05";
