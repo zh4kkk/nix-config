@@ -16,7 +16,7 @@
     videos = null;
   };
 
-# Git:
+  # Git:
   programs.git = {
     enable = true;
     settings = {
@@ -31,12 +31,29 @@
     enable = true;
   };
 
-# Zsh:
+  # Antigravity CLI:
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
+  # Декларативно включаем режим прямого API-ключа (без OAuth и браузера):
+  home.file.".gemini/antigravity-cli/settings.json".text = builtins.toJSON {
+    modelProvider = "gemini";
+  };
+
+  # Zsh:
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = builtins.readFile ./configs/zsh/.zshrc;
+
+    # Безопасная подгрузка ключа из локального файла (без попадания в Git):
+    envExtra = ''
+      if [ -f "$HOME/geminiKey" ]; then
+        export GEMINI_API_KEY="$(cat "$HOME/geminiKey")"
+      fi
+    '';
   };
   programs.starship.enable = true;
   programs.zoxide = {
@@ -46,7 +63,7 @@
   services.udiskie.enable = true;
   services.cliphist.enable = true;
 
-# Configs:
+  # Configs:
   xdg.configFile = {
     "sway".source = ./configs/sway;
     "waybar".source = ./configs/waybar;
@@ -58,7 +75,7 @@
     "zed".source = ./configs/zed;
   };
 
-# Customization:
+  # Customization:
   home.pointerCursor = {
     enable = true;
     gtk.enable = true;
@@ -80,10 +97,8 @@
   };
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-
   # Software:
   home.packages = with pkgs; [
-
     waybar
     kitty
     fuzzel
@@ -103,7 +118,6 @@
     ncpamixer
     alsa-utils
 
-
     yazi
     fd
     ripgrep
@@ -114,7 +128,6 @@
     unar
     p7zip
 
-
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     zed-editor
     jetbrains.rider
@@ -122,7 +135,6 @@
     bruno
     onlyoffice-desktopeditors
     steam
-
 
     dotnetCorePackages.sdk_10_0
     nodejs
@@ -136,7 +148,6 @@
     alejandra
     go
     pnpm
-    antigravity
   ];
 
   home.stateVersion = "26.05";
