@@ -27,19 +27,16 @@
       init.defaultBranch = "main";
     };
   };
+
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false; # убирает предупреждение из логов сборки
   };
 
-  # Antigravity CLI:
+  # Antigravity CLI (добавляем бинарник в PATH):
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
-
-  # Декларативно включаем режим прямого API-ключа (без OAuth и браузера):
-  home.file.".gemini/antigravity-cli/settings.json".text = builtins.toJSON {
-    modelProvider = "gemini";
-  };
 
   # Zsh:
   programs.zsh = {
@@ -48,13 +45,14 @@
     syntaxHighlighting.enable = true;
     initContent = builtins.readFile ./configs/zsh/.zshrc;
 
-    # Безопасная подгрузка ключа из локального файла (без попадания в Git):
+    # Безопасная подгрузка ключа из локального файла ~/geminiKey:
     envExtra = ''
       if [ -f "$HOME/geminiKey" ]; then
         export GEMINI_API_KEY="$(cat "$HOME/geminiKey")"
       fi
     '';
   };
+
   programs.starship.enable = true;
   programs.zoxide = {
     enable = true;
