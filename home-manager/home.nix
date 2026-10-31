@@ -136,7 +136,7 @@
     alejandra
     go
     pnpm
-    claude-code
+    antigravity
   ];
 
   home.stateVersion = "26.05";

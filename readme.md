@@ -7,15 +7,14 @@
 - перенастроить sway
 - перенастроить waybar
 - настроить yazi
-
 - поставить steam
 - поставить lazygit
-- поставить lazyvim
+- поставить lazydocker
 - отдельные окружения каждого проекта
 - настроить helix
 - настроить Yazi
 - настроить Rider
-- настроить claude code
+- настроить antigravity cli
 - rss reader
 - перенастроить sway
 - перенастроить kitty
