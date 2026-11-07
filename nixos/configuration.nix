@@ -17,10 +17,22 @@
     enable = true;
     powerOnBoot = false;
   };
-  services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
   services.udisks2.enable = true;
 
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+
+      PLATFORM_PROFILE_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      PLATFORM_PROFILE_ON_BAT = "low-power";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+    };
+  };
 
   # network & locale:
   networking = {
@@ -35,11 +47,10 @@
     checkReversePath = "loose";
     trustedInterfaces = [ "tun0" ];
   };
-    services.v2raya = {
-      enable = true;
-      cliPackage = pkgs.xray;
-    };
-
+  services.v2raya = {
+    enable = true;
+    cliPackage = pkgs.xray;
+  };
 
   # user:
   users.users."admin" = {
@@ -74,13 +85,12 @@
     };
   };
   services.logind.settings = {
-      Login = {
-        HandleLidSwitch = "suspend";
-        HandleLidSwitchExternalPower = "ignore";
-        HandleLidSwitchDocked = "ignore";
-      };
+    Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
     };
-
+  };
 
   # sway:
   programs.sway = {
@@ -99,7 +109,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-
   # sound:
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -112,13 +121,11 @@
     pulse.enable = true;
   };
 
-
   # fonts:
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     noto-fonts-color-emoji
   ];
-
 
   # services:
   virtualisation.docker.enable = true;
@@ -146,10 +153,10 @@
     };
   };
   swapDevices = [ {
-      device = "/swapfile";
-      size = 8 * 1024;
-    } ];
+    device = "/swapfile";
+    size = 8 * 1024;
+  } ];
 
   system.stateVersion = "26.05";
-    documentation.nixos.enable = false;
+  documentation.nixos.enable = false;
 }
