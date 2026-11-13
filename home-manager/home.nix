@@ -115,6 +115,7 @@
     bluetuith
     ncpamixer
     alsa-utils
+    telegram-desktop
 
     yazi
     fd
@@ -146,7 +147,7 @@
     alejandra
     go
     pnpm
-    opencode
+    qwen-code
   ];
 
   home.stateVersion = "26.05";
