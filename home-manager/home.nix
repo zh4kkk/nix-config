@@ -146,7 +146,6 @@
     go
     pnpm
     codex
-    chatgpt
   ];
 
   home.stateVersion = "26.05";
