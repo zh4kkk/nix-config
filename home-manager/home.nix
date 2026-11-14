@@ -115,7 +115,6 @@
     bluetuith
     ncpamixer
     alsa-utils
-    telegram-desktop
 
     yazi
     fd
@@ -133,7 +132,6 @@
     helix
     bruno
     onlyoffice-desktopeditors
-    steam
 
     dotnetCorePackages.sdk_10_0
     nodejs
@@ -147,7 +145,7 @@
     alejandra
     go
     pnpm
-    qwen-code
+    codex
   ];
 
   home.stateVersion = "26.05";
